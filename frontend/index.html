@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="titulo.login">Sindex - Login</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="i18n.js"></script>
+</head>
+<body>
+  <!-- Topo -->
+  <div class="top-bar">
+    <div class="logo-circle">LOGO</div>
+    <h1 class="header-title">Sindex</h1>
+    <div class="lang-selector"></div>
+  </div>
+
+  <!-- Login -->
+  <div class="login-card">
+    <p id="mensagem" class="mensagem" role="alert" hidden></p>
+
+    <form id="loginForm" style="width: 100%;">
+
+      <div class="form-group">
+        <label for="login" data-i18n="login.email">E-mail</label>
+        <input type="email" id="login" class="input-field" autocomplete="username" required>
+      </div>
+
+      <div class="form-group">
+        <label for="senha" data-i18n="login.senha">Senha</label>
+        <input type="password" id="senha" class="input-field" autocomplete="current-password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="metodo" data-i18n="login.metodo">Selecione o método de Login</label>
+        <select id="metodo" class="select-field">
+          <option value="pessoal" data-i18n="modo.pessoal">Pessoal</option>
+          <option value="corporativo" data-i18n="modo.corporativo">Corporativo</option>
+        </select>
+      </div>
+
+      <div class="button-group">
+        <button type="button" id="btnCadastrar" class="btn" data-i18n="login.cadastrar">Cadastrar</button>
+        <button type="submit" id="loginButton" class="btn" data-i18n="login.entrar">Login</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Scripts -->
+  <script src="api.js"></script>
+  <script src="configuracoes.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>

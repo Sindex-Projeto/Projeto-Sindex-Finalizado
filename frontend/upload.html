@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="titulo.upload">Sindex - Upload</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="i18n.js"></script>
+</head>
+<body>
+
+  <!-- Topo -->
+  <div class="top-bar">
+    <div class="logo-circle">LOGO</div>
+    <h1 class="header-title">Sindex</h1>
+    <div class="lang-selector">
+      <span id="nome-usuario"></span>
+      <button type="button" id="btnSair" class="link-btn" data-i18n="comum.sair">Sair</button>
+    </div>
+  </div>
+
+  <!-- Upload -->
+  <div class="content-container">
+    <p id="mensagem" class="mensagem" role="alert" hidden></p>
+
+    <!-- Modo e repositório -->
+    <div class="linha-selecao">
+      <div class="form-group">
+        <label for="modo-select" data-i18n="upload.modo">Modo</label>
+        <select id="modo-select" class="select-field">
+          <option value="pessoal" data-i18n="modo.pessoal">Pessoal</option>
+          <option value="corporativo" data-i18n="modo.corporativo">Corporativo</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="repositorio-select" data-i18n="upload.repositorio">Repositório</label>
+        <select id="repositorio-select" class="select-field"></select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <!-- Pasta de destino -->
+      <label for="pasta-select" data-i18n="upload.pasta">Pasta de destino</label>
+      <select id="pasta-select" class="select-field"></select>
+    </div>
+
+    <!-- Criar repositório corporativo -->
+    <details class="novo-repo">
+      <summary data-i18n="upload.criar_repo">Criar repositório corporativo</summary>
+      <form id="repo-form" class="link-form">
+        <input type="text" id="repo-nome" class="input-field" data-i18n-placeholder="upload.repo_nome_ph" placeholder="Nome da empresa ou equipe" maxlength="100" required>
+        <button type="submit" id="btnCriarRepo" class="btn" data-i18n="upload.criar">Criar</button>
+      </form>
+    </details>
+
+    <!-- Caixa de upload (clicar ou arrastar) -->
+    <label for="file-input" id="upload-box" class="upload-box">
+      <span class="upload-text" data-i18n="upload.caixa">Faça upload de arquivos</span>
+      <span class="upload-dica" data-i18n="upload.formatos">PDF, TXT, MD, CSV, DOCX, imagens, MP4 e MOV</span>
+      <div class="folder-icon"></div>
+    </label>
+    <input type="file" id="file-input" multiple
+           accept=".pdf,.txt,.md,.csv,.docx,.png,.jpg,.jpeg,.gif,.mp4,.mov">
+
+    <!-- Adicionar link -->
+    <form id="link-form" class="link-form">
+      <input type="url" id="link-url" class="input-field" data-i18n-placeholder="upload.link_ph" placeholder="Ou cole um link (https://...)" required>
+      <button type="submit" id="btnLink" class="btn" data-i18n="upload.adicionar">Adicionar</button>
+    </form>
+
+    <!-- Resultado do envio -->
+    <ul id="resultado" class="resultado" aria-live="polite"></ul>
+
+    <button type="button" id="btnVerRepositorio" class="btn-repository" data-i18n="upload.ver_repo">Ver Repositório</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="api.js"></script>
+  <script src="configuracoes.js"></script>
+  <script src="upload.js"></script>
+</body>
+</html>

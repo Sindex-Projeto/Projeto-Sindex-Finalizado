@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="titulo.cadastro">Sindex - Criar Conta</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="i18n.js"></script>
+</head>
+<body>
+  <!-- Topo -->
+  <div class="top-bar">
+    <div class="logo-circle">LOGO</div>
+    <h1 class="header-title">Sindex</h1>
+    <div class="lang-selector"></div>
+  </div>
+
+  <!-- Cadastro -->
+  <div class="login-card">
+    <h2 data-i18n="cadastro.titulo">Criar Conta</h2>
+    <p class="subtitulo" data-i18n="cadastro.sub">Preencha os dados abaixo para se cadastrar.</p>
+
+    <p id="mensagem" class="mensagem" role="alert" hidden></p>
+
+    <form id="cadastro-form" style="width: 100%;">
+      <div class="form-group">
+        <label for="nome" data-i18n="cadastro.nome">Nome completo</label>
+        <input type="text" id="nome" class="input-field" data-i18n-placeholder="cadastro.nome_ph" placeholder="Seu nome" autocomplete="name" maxlength="100" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email" data-i18n="login.email">E-mail</label>
+        <input type="email" id="email" class="input-field" data-i18n-placeholder="cadastro.email_ph" placeholder="seuemail@exemplo.com" autocomplete="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="senha" data-i18n="cadastro.senha">Senha (mínimo 8 caracteres)</label>
+        <input type="password" id="senha" class="input-field" placeholder="••••••••" autocomplete="new-password" minlength="8" required>
+      </div>
+
+      <div class="form-group">
+        <label for="confirma-senha" data-i18n="cadastro.confirma">Confirmar senha</label>
+        <input type="password" id="confirma-senha" class="input-field" placeholder="••••••••" autocomplete="new-password" minlength="8" required>
+      </div>
+
+      <div class="button-group">
+        <button type="submit" id="btnCadastro" class="btn" data-i18n="cadastro.botao">Cadastrar</button>
+      </div>
+    </form>
+
+    <div class="rodape-card">
+      <span data-i18n="cadastro.tem_conta">Já possui uma conta?</span> <a href="index.html" data-i18n="cadastro.fazer_login">Fazer login</a>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="api.js"></script>
+  <script src="configuracoes.js"></script>
+  <script src="cadastro.js"></script>
+</body>
+</html>

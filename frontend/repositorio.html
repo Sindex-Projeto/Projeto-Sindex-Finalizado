@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="titulo.repositorio">Sindex - Repositório</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="i18n.js"></script>
+</head>
+<body class="pagina-app">
+
+  <!-- Topo -->
+  <div class="top-bar">
+    <div class="logo-circle">LOGO</div>
+    <h1 class="header-title">Sindex</h1>
+    <div class="lang-selector">
+      <span id="nome-usuario"></span>
+      <button type="button" id="btnSair" class="link-btn" data-i18n="comum.sair">Sair</button>
+    </div>
+  </div>
+
+  <!-- Conteúdo -->
+  <main class="painel">
+    <div class="painel-topo">
+      <h2>
+        <span id="titulo-repositorio" data-i18n="repo.titulo_padrao">Repositório</span>
+        <span id="papel-repositorio" class="papel"></span>
+      </h2>
+      <a href="upload.html" class="acao" data-i18n="repo.enviar">+ Enviar arquivos</a>
+    </div>
+
+    <p id="mensagem" class="mensagem" role="alert" hidden></p>
+
+    <!-- Caminho das pastas -->
+    <nav id="trilha" class="trilha" data-i18n-aria="repo.trilha" aria-label="Caminho das pastas" hidden></nav>
+
+    <!-- Pastas da pasta atual -->
+    <section id="secao-pastas" class="secao-pastas" hidden>
+      <ul id="lista-pastas" class="pastas"></ul>
+      <form id="pasta-form" class="link-form" hidden>
+        <input type="text" id="pasta-nome" class="input-field" data-i18n-placeholder="repo.nova_pasta_ph" placeholder="Nome da nova pasta" maxlength="100" required>
+        <button type="submit" class="btn" data-i18n="repo.nova_pasta">Nova pasta</button>
+      </form>
+    </section>
+
+    <!-- Busca e filtro -->
+    <div id="filtros" class="filtros" hidden>
+      <input type="search" id="busca" class="input-field" data-i18n-placeholder="repo.busca_ph" data-i18n-aria="repo.busca_aria" placeholder="Buscar pelo nome (em todas as pastas)..." aria-label="Buscar arquivos pelo nome">
+      <label id="busca-ia-wrap" class="check-ia" hidden>
+        <input type="checkbox" id="busca-ia">
+        <span data-i18n="ia.busca_significado">Por significado (IA)</span>
+      </label>
+      <select id="filtro-categoria" class="select-field" data-i18n-aria="repo.filtro_aria" aria-label="Filtrar por categoria"></select>
+      <select id="filtro-tipo" class="select-field" data-i18n-aria="repo.filtro_tipo_aria" aria-label="Filtrar por tipo">
+        <option value="" data-i18n="repo.tipo_todos">Arquivos e links</option>
+        <option value="arquivo" data-i18n="repo.tipo_arquivos">Só arquivos</option>
+        <option value="link" data-i18n="repo.tipo_links">Só links</option>
+      </select>
+    </div>
+
+    <p id="aviso-busca" class="dica" data-i18n="repo.aviso_busca" hidden>Mostrando resultados de todas as pastas do repositório.</p>
+
+    <!-- IA: organizar vários arquivos de uma vez -->
+    <div id="barra-ia" class="barra-ia" hidden>
+      <button type="button" id="btnOrganizarTodos" class="btn" data-i18n="ia.organizar_todos">Organizar tudo com IA</button>
+      <button type="button" id="btnAplicarTodas" class="btn" hidden></button>
+      <span id="progresso-ia" class="dica" role="status"></span>
+    </div>
+
+    <!-- Tabela de arquivos -->
+    <div id="tabela-wrap" class="tabela-wrap" hidden>
+      <table>
+        <thead>
+          <tr>
+            <th data-i18n="repo.col_nome">Nome</th>
+            <th data-i18n="repo.col_tipo">Tipo</th>
+            <th data-i18n="repo.col_tamanho">Tamanho</th>
+            <th data-i18n="repo.col_pasta">Pasta</th>
+            <th data-i18n="repo.col_categoria">Categoria</th>
+            <th data-i18n="repo.col_situacao">Situação</th>
+            <th data-i18n="repo.col_data">Enviado em</th>
+            <th data-i18n="repo.col_acoes">Ações</th>
+          </tr>
+        </thead>
+        <tbody id="corpo-tabela"></tbody>
+      </table>
+    </div>
+
+    <div id="vazio" class="tabela-wrap vazio" hidden></div>
+
+    <!-- Categorias -->
+    <section id="secao-categorias" class="secao" hidden>
+      <h3 data-i18n="repo.categorias">Categorias</h3>
+      <ul id="lista-categorias" class="chips"></ul>
+      <p id="sem-categorias" class="dica" data-i18n="repo.sem_categorias" hidden>Nenhuma categoria criada ainda.</p>
+      <form id="categoria-form" class="link-form" hidden>
+        <input type="text" id="categoria-nome" class="input-field" data-i18n-placeholder="repo.categoria_ph" placeholder="Nova categoria (ex.: Ciências)" maxlength="100" required>
+        <button type="submit" class="btn" data-i18n="upload.criar">Criar</button>
+      </form>
+    </section>
+
+    <!-- Membros (repositório corporativo) -->
+    <section id="secao-membros" class="secao" hidden>
+      <h3 data-i18n="repo.membros">Membros</h3>
+      <div class="tabela-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th data-i18n="repo.col_nome">Nome</th>
+              <th data-i18n="repo.col_email">E-mail</th>
+              <th data-i18n="repo.col_papel">Papel</th>
+              <th data-i18n="repo.col_acoes">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="corpo-membros"></tbody>
+        </table>
+      </div>
+      <form id="membro-form" class="link-form" hidden>
+        <input type="email" id="membro-email" class="input-field" data-i18n-placeholder="repo.membro_email_ph" placeholder="E-mail de quem já tem conta" required>
+        <select id="membro-papel" class="select-field select-papel">
+          <option value="editor" data-i18n="papel.editor">Editor</option>
+          <option value="leitor" data-i18n="papel.leitor">Leitor</option>
+        </select>
+        <button type="submit" class="btn" data-i18n="repo.convidar">Convidar</button>
+      </form>
+      <p class="dica" data-i18n="repo.dica_papeis">Editor envia, move e exclui arquivos. Leitor só vê e baixa.</p>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script src="api.js"></script>
+  <script src="configuracoes.js"></script>
+  <script src="repositorio.js"></script>
+</body>
+</html>

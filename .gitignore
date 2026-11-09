@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Banco local e arquivos enviados pelos usuários
+backend/instance/
+backend/uploads/
+*.db
+
+# Segredos
+.env
+
+# Editor / sistema
+.vscode/
+.DS_Store
